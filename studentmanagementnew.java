@@ -74,8 +74,65 @@ public class studentmanagementnew {
 
 		    preparedStatement.close();
 		}
-public static void main(String[] args) {
-	
-}
+		
+		
+		
+		public static void Removestudent() throws ClassNotFoundException, SQLException {
+
+		    PreparedStatement preparedStatement =
+		            dbConnect().prepareStatement(
+		                    "delete from student1 where id=?"
+		            );
+
+		    System.out.println("Enter roll no to remove: ");
+		    preparedStatement.setInt(1, sc.nextInt());
+
+		    int result = preparedStatement.executeUpdate();
+
+		    System.out.println("Query Ok " + result + " rows affected");
+
+		    preparedStatement.close();
+		}
+		
+		
+		 public static void main(String[] args) throws ClassNotFoundException, SQLException {
+	    	  boolean flag=true;
+	    	  while(flag) {
+			     System.out.println("========== Student management system ============");
+			     System.out.println("1.Add a student");
+			     System.out.println("2.Update a student");
+			     System.out.println("3.Remove a student");
+			     System.out.println("4.Display a students");
+			     System.out.println("5.Exit..");
+			     
+			     
+			     System.out.println("enter a choice: ");
+			     int ch=sc.nextInt();
+			     switch (ch) {
+				case 1->{
+					addStudent();
+				}
+				
+				case 2->{
+					updatestudent();
+				}
+				
+				case 3->{
+					Removestudent();
+				}
+				
+				case 4->{
+					Displaystudent();
+				}
+				
+				case 5 -> { 
+					System.out.println("Thank You! Exiting..."); 
+					flag = false; 
+					} 
+				
+				default -> System.out.println("Invalid Choice! Please try again.");
+				}
+			     
+			     }
 		
 }
