@@ -94,6 +94,21 @@ public class studentmanagementnew {
 		    preparedStatement.close();
 		}
 		
+		public static void Displaystudent() throws SQLException, ClassNotFoundException {
+			PreparedStatement statement=dbConnect().prepareStatement("select * from student1");
+			ResultSet set=statement.executeQuery();
+			
+			System.out.println("=====student details=====");
+			System.out.println("-----------------------");
+			while(set.next()){
+				System.out.println("|"+set.getInt(1)+"|"+set.getString(2)+"|"+set.getInt(3)+"|"+set.getString(4));
+				System.out.println("------------------------------------");
+			}
+			
+			statement.close();
+			
+		
+		
 		
 		 public static void main(String[] args) throws ClassNotFoundException, SQLException {
 	    	  boolean flag=true;
@@ -133,6 +148,6 @@ public class studentmanagementnew {
 				default -> System.out.println("Invalid Choice! Please try again.");
 				}
 			     
-			     }
+			      }
 		
 }
