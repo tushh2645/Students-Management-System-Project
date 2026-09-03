@@ -44,4 +44,38 @@ public class studentmanagementnew {
 			
 		}
 		
+		public static void updatestudent() throws ClassNotFoundException, SQLException {
+
+		    PreparedStatement preparedStatement =
+		            dbConnect().prepareStatement(
+		                    "update student1 set name=?, age=?, city=? where id=?"
+		            );
+
+		    System.out.println("Enter roll no: ");
+		    int rollno = sc.nextInt();
+
+		    System.out.println("Enter new name: ");
+		    String name = sc.next();
+
+		    System.out.println("Enter new age: ");
+		    int age = sc.nextInt();
+
+		    System.out.println("Enter new city: ");
+		    String city = sc.next();
+
+		    preparedStatement.setString(1, name);
+		    preparedStatement.setInt(2, age);
+		    preparedStatement.setString(3, city);
+		    preparedStatement.setInt(4, rollno);
+
+		    int result = preparedStatement.executeUpdate();
+
+		    System.out.println("Query Ok " + result + " rows affected");
+
+		    preparedStatement.close();
+		}
+public static void main(String[] args) {
+	
+}
+		
 }
